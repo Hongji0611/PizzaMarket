@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:pizza_market/home_screen.dart';
 import 'package:pizza_market/splash_screen.dart';
 
+import 'utils/logger.dart';
+
 void main(){
   runApp(MyApp());
 }
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
   }
 
   StatelessWidget _splashLodingWidget(AsyncSnapshot<Object> snapshot) {
-    if(snapshot.hasError) {print('Error'); return Text('Error');}
+    if(snapshot.hasError) {logger.d("error: splash-future"); return Text('Error');}
     else if(snapshot.hasData) {return HomeScreen();}
     else { return SplashScreen();}
   }
